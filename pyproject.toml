@@ -1,0 +1,61 @@
+[project]
+name = "linkedown"
+version = "0.1.0"
+description = "Bidirectional Markdown ↔ LinkedIn Unicode converter. CLI and MCP tools."
+readme = {file = "README.md", content-type = "text/markdown"}
+authors = [{name = "Gregory R. Warnes", email = "greg@warnes-innovations.com"}]
+license = {text = "MIT"}
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+keywords = ["linkedin", "markdown", "converter", "unicode", "mcp", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+# md→li direction uses mistune + click + rich (same as upstream md-to-linkedin).
+# li→md direction is pure stdlib; no extra deps.
+# mcp dependency is for the MCP server.
+dependencies = [
+    "click>=8.0",
+    "mistune>=3.0",
+    "mcp>=1.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+clipboard = ["pyperclip"]
+dev     = ["pytest>=8.0", "pytest-cov", "ruff", "mypy", "hatch"]
+
+[project.urls]
+Homepage  = "https://github.com/Warnes-Innovations/linkedown"
+Repository = "https://github.com/Warnes-Innovations/linkedown"
+Issues    = "https://github.com/Warnes-Innovations/linkedown/issues"
+
+[project.scripts]
+md2li   = "linkedown.cli:md2li_main"
+li2md   = "linkedown.cli:li2md_main"
+linkedown-mcp = "linkedown.server:main"
+
+[build-system]
+requires      = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+include = ["/LICENSE", "/README.md", "/src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
