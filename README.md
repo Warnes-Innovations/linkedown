@@ -13,6 +13,8 @@ The Markdown → LinkedIn conversion logic is derived from
 
 ```sh
 pip install linkedown
+# or 
+pipx install linkedown
 ```
 
 ## CLI usage
