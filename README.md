@@ -6,13 +6,35 @@ LinkedIn does not render Markdown, but does display Unicode styled characters co
 `linkedown` converts between the two formats — both as a CLI tool and as an MCP server
 for use by coding agents.
 
+
 The Markdown → LinkedIn conversion logic is derived from
 [md-to-linkedin](https://github.com/shenning00/md-to-linkedin) by Scott Henning (MIT).
+
+## Agent instructions for Copilot, Claude, Codex, and Cline
+
+To enable agent-aware workflows, `linkedown` provides example agent instruction files for Copilot, Claude, Codex, and Cline in the `agent-instructions/` directory.
+
+To install these instructions for your VS Code agents, run:
+
+```sh
+cd agent-instructions
+./install-agent-instructions.sh
+```
+
+This will copy the following files to your VS Code user data directory:
+- `copilot-instructions.md`
+- `CLAUDE.md`
+- `codex-instructions.md`
+- `cline-instructions.md`
+
+You can customize these files as needed for your workflow. See `agent-instructions/README.md` for details.
 
 ## Installation
 
 ```sh
 pip install linkedown
+# or 
+pipx install linkedown
 ```
 
 ## CLI usage
