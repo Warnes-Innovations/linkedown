@@ -33,6 +33,8 @@ You can customize these files as needed for your workflow. See `agent-instructio
 
 ```sh
 pip install linkedown
+# or 
+pipx install linkedown
 ```
 
 ## CLI usage
